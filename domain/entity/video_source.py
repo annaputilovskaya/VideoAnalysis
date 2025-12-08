@@ -76,5 +76,12 @@ class RecordingSource:
         idx: RecordingSourceId,
         extra: RecordingSourceExtra = RecordingSourceExtra(),
     ) -> None:
+        """
+        Initializes a RecordingSource instance.
+
+        Args:
+            idx: The unique identifier for the source.
+            extra: Optional extra data.
+        """
         self.idx: RecordingSourceId = idx
         self.source_id: RecordingSourceExtra = extra
