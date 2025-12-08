@@ -16,9 +16,18 @@ class RecordingSourceId:
 
     @staticmethod
     def new() -> "RecordingSourceId":
+        """
+        Generates a new, unique RecordingSourceId instance.
+
+        Returns:
+            RecordingSourceId: A new instance with a randomly generated UUID4 value.
+        """
         return RecordingSourceId(uuid4())
 
     def __str__(self) -> str:
+        """
+        Returns the string representation of the UUID value.
+        """
         return str(self.value)
 
 
