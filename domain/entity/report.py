@@ -10,7 +10,8 @@ from domain.entity.detected_object import ObjectId
 
 @dataclass(frozen=True)
 class ReportId:
-    """Unique identifier for a report.
+    """
+    Unique identifier for a report.
 
     Attributes:
         value (UUID): The underlying UUID value of the report identifier.
@@ -19,7 +20,8 @@ class ReportId:
 
     @staticmethod
     def new() -> "ReportId":
-        """Generates a new unique ReportId using UUID4.
+        """
+        Generates a new unique ReportId using UUID4.
 
         Returns:
             ReportId: A new instance with a random UUID.
@@ -27,7 +29,8 @@ class ReportId:
         return ReportId(uuid4())
 
     def __str__(self) -> str:
-        """Returns the string representation of the report ID.
+        """
+        Returns the string representation of the report ID.
 
         Returns:
             str: The UUID as a string.
@@ -37,7 +40,8 @@ class ReportId:
 
 @dataclass(frozen=True)
 class ReportType:
-    """"Represents the classification of the report.
+    """
+    Represents the classification of the report.
 
     Defines the purpose of the report, such as 'people_count' or
     'gender_distribution'.
@@ -50,7 +54,8 @@ class ReportType:
 
 @dataclass(frozen=True)
 class TimeRange:
-    """A time interval for which the report is generated.
+    """
+    A time interval for which the report is generated.
 
     Attributes:
         start (datetime): The beginning of the reporting period.
@@ -62,7 +67,8 @@ class TimeRange:
 
 @dataclass
 class ReportData:
-    """Aggregated report data container.
+    """
+    Aggregated report data container.
 
     Currently, stores data in a flexible dictionary format to allow for
     evolution. Specific metrics can be extracted into structured fields
@@ -77,7 +83,8 @@ class ReportData:
 
 
 class Report:
-    """An analytical report generated for the customer.
+    """
+    An analytical report generated for the customer.
 
     This entity encapsulates the final results of data processing,
     linking aggregated metrics with their time range, source recordings,
@@ -106,7 +113,8 @@ class Report:
         video_idx_list: list["VideoFileId"],
         object_idx_list: list["ObjectId"],
     ) -> None:
-        """Initializes a Report instance.
+        """
+        Initializes a Report instance.
 
         Args:
             idx (ReportId): Unique identifier for the report.
