@@ -4,7 +4,7 @@ from datetime import datetime
 from typing import Any
 
 from domain.entity.detected_object import DetectedObject, ObjectId, ObjectClass
-from domain.entity.video_source import RecordingSourceId
+from domain.entity.record_source import RecordingSourceId
 from domain.entity.video_file import VideoFileId
 
 

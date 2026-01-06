@@ -3,7 +3,7 @@ from datetime import datetime
 from typing import Any
 from uuid import UUID, uuid4
 
-from domain.entity.video_source import RecordingSourceId
+from domain.entity.record_source import RecordingSourceId
 
 
 @dataclass(frozen=True)

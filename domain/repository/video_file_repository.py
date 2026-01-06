@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 from domain.entity.video_file import VideoFile, VideoFileId
-from domain.entity.video_source import RecordingSourceId
+from domain.entity.record_source import RecordingSourceId
 
 
 class VideoFileRepository(ABC):

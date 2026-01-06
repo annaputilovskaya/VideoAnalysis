@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from domain.entity.video_source import RecordingSource, RecordingSourceId
+from domain.entity.record_source import RecordingSource, RecordingSourceId
 
 
 class RecordingSourceRepository(ABC):
