@@ -139,3 +139,47 @@ class DetectedObject:
         self.object_class = object_class
         self.attributes = attributes or ObjectAttributes()
         self.frames: list[FrameRef] = frames or []
+
+    def add_frame(self, frame_ref: FrameRef) -> None:
+        """
+        Records that the object was detected in an additional frame.
+
+        Args:
+            frame_ref (FrameRef): Reference to the frame where the object appeared.
+        """
+        self.frames.append(frame_ref)
+
+    def last_seen_at(self) -> datetime | None:
+        """
+        Returns the timestamp of the object's most recent detection.
+
+        Returns:
+            datetime | None: The latest captured_at timestamp from the frames history,
+                or None if the object has no associated frames.
+        """
+        if not self.frames:
+            return None
+        return max(ref.captured_at for ref in self.frames)
+
+    def was_seen_in_range(self, start: datetime, end: datetime) -> bool:
+        """
+        Checks if the object appeared within the specified time interval.
+
+        Args:
+            start (datetime): The beginning of the interval (inclusive).
+            end (datetime): The end of the interval (exclusive).
+
+        Returns:
+            bool: True if at least one detection falls within the range, False otherwise.
+        """
+        return any(start <= ref.captured_at < end for ref in self.frames)
+
+    def update_attributes(self, meta: dict[str, Any]) -> None:
+        """
+        Updates the object's metadata attributes.
+
+        Args:
+            meta (dict[str, Any]): A dictionary of attributes to merge into the
+                existing object metadata (attributes.meta).
+        """
+        self.attributes.meta.update(meta)
