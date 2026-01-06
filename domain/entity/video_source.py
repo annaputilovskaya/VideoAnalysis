@@ -84,7 +84,7 @@ class RecordingSource:
             extra: Optional extra data.
         """
         self.idx: RecordingSourceId = idx
-        self.source_id: RecordingSourceExtra = extra
+        self.extra: RecordingSourceExtra = extra
 
     def create(
             self,
