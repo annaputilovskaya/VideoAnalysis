@@ -85,3 +85,12 @@ class RecordingSource:
         """
         self.idx: RecordingSourceId = idx
         self.source_id: RecordingSourceExtra = extra
+
+    def update_extra(self, extra: RecordingSourceExtra) -> None:
+        """
+        Updates the extra metadata for the recording source.
+
+        Args:
+            extra (RecordingSourceExtra): The new metadata to associate with the source.
+        """
+        self.extra = extra
