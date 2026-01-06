@@ -87,26 +87,6 @@ class RecordingSource:
         self.idx: RecordingSourceId = idx
         self.extra: RecordingSourceExtra = extra
 
-    def create(
-            self,
-            extra: RecordingSourceExtra | None = None,
-    ) -> "RecordingSource":
-        """
-        Creates a new RecordingSource with a generated unique identifier.
-
-        Args:
-            extra (RecordingSourceExtra | None): Optional extra metadata for the new source.
-                If None, an empty RecordingSourceExtra instance is used.
-
-        Returns:
-            RecordingSource: A newly created RecordingSource instance.
-        """
-        idx = RecordingSourceId.new()
-        return RecordingSource(
-            idx=idx,
-            extra=extra or RecordingSourceExtra()
-        )
-
     def update_extra(self, extra: RecordingSourceExtra) -> None:
         """
         Updates the extra metadata for the recording source.
