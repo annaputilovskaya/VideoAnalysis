@@ -49,3 +49,32 @@ class Frame:
         self.video_idx = video_idx
         self.captured_at = captured_at
         self.data = data
+
+    def update_data(self, data: FrameData) -> None:
+        """
+        Updates the frame's raw data.
+
+        This method centralizes all changes to the underlying frame data,
+        accounting for scenarios such as:
+            - Re-encoding the frame.
+            - Applying anonymization or masking.
+            - Downscaling or changing compression (e.g., to JPEG).
+
+        Args:
+            data (FrameData): The new frame data object to replace the current one.
+        """
+        self.data = data
+
+    def is_in_time_range(self, start: datetime, end: datetime) -> bool:
+        """
+        Checks if the frame's capture time falls within the interval.
+
+        Args:
+            start (datetime): The beginning of the interval (inclusive).
+            end (datetime): The end of the interval (exclusive).
+
+        Returns:
+            bool: True if the frame was captured within the specified interval,
+                False otherwise.
+        """
+        return start <= self.captured_at < end

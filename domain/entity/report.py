@@ -3,7 +3,7 @@ from datetime import datetime
 from typing import Any
 from uuid import UUID, uuid4
 
-from domain.entity.video_source import RecordingSourceId
+from domain.entity.record_source import RecordingSourceId
 from domain.entity.video_file import VideoFileId
 from domain.entity.detected_object import ObjectId
 
@@ -136,3 +136,60 @@ class Report:
         self.source_idx_list = list(source_idx_list)
         self.video_idx_list = list(video_idx_list)
         self.object_idx_list = list(object_idx_list)
+
+    def covers_moment(self, moment: datetime) -> bool:
+        """
+        Checks if the specified moment falls within the report's time range.
+
+        Args:
+            moment (datetime): The timestamp to check.
+
+        Returns:
+            bool: True if the moment is within the interval, False otherwise.
+        """
+        return self.time_range.start <= moment < self.time_range.end
+
+    def overlaps_with(self, start: datetime, end: datetime) -> bool:
+        """
+        Checks if the report's time range overlaps with the given interval.
+
+        Args:
+            start (datetime): The start of the interval to check.
+            end (datetime): The end of the interval to check.
+
+        Returns:
+            bool: True if there is an intersection between the ranges, False otherwise.
+        """
+        r_start = self.time_range.start
+        r_end = self.time_range.end
+        return not (end <= r_start or r_end <= start)
+
+    def add_source_idx(self, source_idx: "RecordingSourceId") -> None:
+        """
+        Adds a recording source identifier to the report's evidence list.
+
+        Args:
+            source_idx (RecordingSourceId): The identifier of the source to add.
+        """
+        if source_idx not in self.source_idx_list:
+            self.source_idx_list.append(source_idx)
+
+    def add_video_idx(self, video_idx: "VideoFileId") -> None:
+        """
+        Adds a video file identifier to the report's evidence list.
+
+        Args:
+            video_idx (VideoFileId): The identifier of the video file to add.
+        """
+        if video_idx not in self.video_idx_list:
+            self.video_idx_list.append(video_idx)
+
+    def add_object_idx(self, object_idx: "ObjectId") -> None:
+        """
+        Adds a detected object identifier to the report's evidence list.
+
+        Args:
+            object_idx (ObjectId): The identifier of the object to add.
+        """
+        if object_idx not in self.object_idx_list:
+            self.object_idx_list.append(object_idx)

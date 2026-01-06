@@ -4,7 +4,7 @@ from typing import Any
 
 from domain.entity.detected_object import DetectedObject, ObjectId
 from domain.entity.video_file import VideoFileId
-from domain.entity.video_source import RecordingSourceId
+from domain.entity.record_source import RecordingSourceId
 
 
 @dataclass

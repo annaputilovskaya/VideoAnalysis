@@ -80,8 +80,18 @@ class RecordingSource:
         Initializes a RecordingSource instance.
 
         Args:
-            idx: The unique identifier for the source.
-            extra: Optional extra data.
+            idx (RecordingSourceId): The unique identifier for the source.
+            extra (RecordingSourceExtra): Optional extra metadata.
+                Defaults to a new RecordingSourceExtra instance.
         """
         self.idx: RecordingSourceId = idx
-        self.source_id: RecordingSourceExtra = extra
+        self.extra: RecordingSourceExtra = extra
+
+    def update_extra(self, extra: RecordingSourceExtra) -> None:
+        """
+        Updates the extra metadata for the recording source.
+
+        Args:
+            extra (RecordingSourceExtra): The new metadata to associate with the source.
+        """
+        self.extra = extra
